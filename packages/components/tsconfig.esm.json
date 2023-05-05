@@ -5,7 +5,8 @@
     "declaration": true,
     "outDir": "./dist/esm",
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     "rootDirs": [
       "stories"
     ],
@@ -25,5 +26,4 @@
     "coverage",
     "stories/templates/*"
   ],
-  "jsx": "react"
 }

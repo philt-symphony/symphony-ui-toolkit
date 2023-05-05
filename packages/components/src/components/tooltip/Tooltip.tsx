@@ -9,6 +9,7 @@ import { PopperContainer, popperProps } from '../common/popperUtils';
 import { showTooltipOnClick, showTooltipOnHover } from './helpers';
 import { useMemo, useState } from 'react';
 import { usePopper } from 'react-popper';
+import { Interpolation, Theme } from '@emotion/react';
 
 const TooltipContainer = styled.div`
   &.TooltipContainer {
@@ -56,6 +57,7 @@ export interface TooltipProps extends Omit<React.HTMLProps<HTMLDivElement>, 'as'
   visible?: boolean;
   /** Optional CSS class name for wrapping span element  */
   wrapperClassName?: string;
+  wrapperCSS?: Interpolation<Theme>
   /**
    * Timeout before the tooltip disappear on hover (in ms)
    * @default 100
@@ -100,11 +102,11 @@ const Tooltip: React.FC<TooltipProps> = ({
   className,
   wrapperClassName,
   hoverDelay = 0,
+  wrapperCSS,
   ...otherProps
 }) => {
   const [popperElement, setPopperElement] = useState(null);
   const [referenceElement, setReferenceElement] = useState(null);
-
   const [showHover, setShowHover] = useState(false);
   const [showClick, setShowClick] = useState(false);
   const handleMouseMove = useMemo(() => debouncer(setShowHover, hoverDelay, hoverTimeout), [hoverDelay, hoverTimeout]);
@@ -139,6 +141,9 @@ const Tooltip: React.FC<TooltipProps> = ({
         : showClick;
 
   const children = <div
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    css={ wrapperCSS }
     className={ classnames('tk-tooltip__wrapper', wrapperClassName) }
     ref={ composeRefs(setReferenceElement, ref) }
   >
@@ -227,6 +232,7 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   hoverDelay: PropTypes.number,
   wrapperClassName: PropTypes.string,
+  wrapperCSS: PropTypes.any,
 };
 
 export default Tooltip;
