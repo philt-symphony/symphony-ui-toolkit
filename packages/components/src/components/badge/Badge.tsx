@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import PropTypes from 'better-prop-types'
 import { clsx } from 'clsx';
 import { BadgeProps } from './interfaces';
 
