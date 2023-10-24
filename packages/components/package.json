@@ -5,6 +5,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "type": "module",
   "license": "ISC",
   "sideEffects": false,
   "main": "index.js",
@@ -22,7 +23,7 @@
     "start": "storybook dev -p 6006",
     "storybook-docs": "storybook dev --docs",
     "build-storybook": "storybook build -c .storybook -o dist/storybook",
-    "test": "jest --watchAll",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --watchAll",
     "test-once": "jest -w 1",
     "cover": "jest -w 1 --coverage",
     "check-circular": "madge --circular --extensions ts,tsx ./",
@@ -36,6 +37,7 @@
     "@popperjs/core": "^2.4.4",
     "@seznam/compose-react-refs": "^1.0.6",
     "@symphony-ui/uitoolkit-styles": "4.0.1",
+    "better-prop-types": "^1.1.1",
     "clsx": "^2.0.0",
     "date-fns": "^2.16.1",
     "emoji-js": "^3.5.0",
@@ -114,6 +116,7 @@
     "storybook-addon-themes": "^6.1.0",
     "storybook-dark-mode": "^3.0.1",
     "style-loader": "^1.2.1",
+    "ts-jest": "^29.1.1",
     "ts-loader": "^7.0.5",
     "typescript": "^5.2.2",
     "yarn-deduplicate": "^3.1.0"

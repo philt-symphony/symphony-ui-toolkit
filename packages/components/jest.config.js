@@ -1,6 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 
-module.exports = {
+export default {
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
   // Indicates whether the coverage information should be collected while executing the test
@@ -22,9 +22,7 @@ module.exports = {
   // the testing framework before each test
   setupFilesAfterEnv: ['jest-extended', '<rootDir>spec/init/setupTests.js'],
   testEnvironment: 'jsdom',
-  transform: {
-    '\\.[jt]sx?$': 'babel-jest',
-  },
+  transform: {},
   verbose: true,
   transformIgnorePatterns: [
     'node_modules/(?!@symphony-ui/uitoolkit-styles/dist/fonts/tk-icons.ts)',
